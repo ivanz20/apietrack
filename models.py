@@ -193,6 +193,7 @@ def Registrar(data: User):
     try:
         cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
+        print("nirvana")
         mycursor = cnx.cursor()
         query = "insert into Usuario (Nombre, Apellido, Usuario, Contra, rol) Values ('" + data.nombre + "','" + data.apellido + "','" + data.user + "','" + data.password +"','" + data.rol + "');"
         print(query)
