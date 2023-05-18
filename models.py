@@ -169,8 +169,8 @@ def LoginForm(user, password):
                 json_data.append(dict(zip(row_headers,result)))
         return json.dumps(json_data)
         
-    except:
-        print("Error al conectar a la base de datos")
+     except Exception as e:
+        print(e)
 
 def GetProductosByIdVenta(id):
     try:
