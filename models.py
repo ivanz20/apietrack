@@ -169,7 +169,7 @@ def LoginForm(user, password):
                 json_data.append(dict(zip(row_headers,result)))
         return json.dumps(json_data)
         
-     except Exception as e:
+    except Exception as e:
         print(e)
 
 def GetProductosByIdVenta(id):
