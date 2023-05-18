@@ -43,7 +43,7 @@ class Entrega(BaseModel):
 
 def GetUsers():
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM Usuario")
@@ -54,12 +54,12 @@ def GetUsers():
                 json_data.append(dict(zip(row_headers,result)))
         return json.dumps(json_data)
         
-    except:
-        print("Error al conectar a la base de datos")
+    except Exception as e:
+        print(e)
         
 def GetProducts():
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM Producto")
@@ -75,7 +75,7 @@ def GetProducts():
 
 def GetClients():
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM Cliente")
@@ -91,7 +91,7 @@ def GetClients():
         
 def GetClientById(id):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM Cliente where idcliente = " + str(id))
@@ -107,7 +107,7 @@ def GetClientById(id):
         
 def GetVentasByClientId(id):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM Venta where idclienteventa = " + str(id))
@@ -124,7 +124,7 @@ def GetVentasByClientId(id):
         
 def GetEntregas():
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM Entrega")
@@ -140,7 +140,7 @@ def GetEntregas():
 
 def GetVentas():
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         mycursor.execute("SELECT Venta.idventa, Venta.fechacompra, Venta.totalventa,Cliente.nombrecliente FROM Venta INNER JOIN Cliente ON Venta.idclienteventa=Cliente.idcliente;")
@@ -157,7 +157,7 @@ def GetVentas():
         
 def LoginForm(user, password):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         query = "SELECT * FROM Usuario where Usuario = '" + user + "' AND Contra = '" + password + "';"
@@ -174,7 +174,7 @@ def LoginForm(user, password):
 
 def GetProductosByIdVenta(id):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         query = "SELECT Producto.nombreproducto, Producto.precio, listaVenta.cantidadproducto FROM listaVenta INNER JOIN Producto ON listaVenta.idproducto=Producto.idproducto where listaVenta.idventa = " + str(id) + ";"
@@ -191,7 +191,7 @@ def GetProductosByIdVenta(id):
         
 def Registrar(data: User):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         query = "insert into Usuario (Nombre, Apellido, Usuario, Contra, rol) Values ('" + data.nombre + "','" + data.apellido + "','" + data.user + "','" + data.password +"','" + data.rol + "');"
@@ -212,7 +212,7 @@ def Registrar(data: User):
         
 def RegistroProducto(data: Producto):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         query = "insert into Producto  (nombreproducto, descripcionproducto,cantidad, precio) Values ('" + data.NombreProducto + "','" + data.DescripcionProducto + "','" + str(data.CantidadProducto) + "','" + str(data.PrecioProducto) + "');"
@@ -233,7 +233,7 @@ def RegistroProducto(data: Producto):
         
 def RegistrarCliente(data: Cliente):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         query = "insert into Cliente (nombrecliente, direccion, celular,email,codigopostal,cord_lat,cord_alt) Values ('" + data.nombreclient + "','" + data.direccion + "','" + data.celular +"','" + data.email + "'," +  str(data.codigopostal) +"," + str(data.corlat) + "," + str(data.coralt) + ");"
@@ -254,7 +254,7 @@ def RegistrarCliente(data: Cliente):
 
 def RegistroVenta(data: Venta):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         
@@ -281,7 +281,7 @@ def RegistroVenta(data: Venta):
         
 def RegistrarEntrega(data: Entrega):
     try:
-        cnx =mysql.connector.connect(user="root", password="",host="127.0.0.1",database="ingsoftware")
+        cnx =mysql.connector.connect(user="ivanzv", password="ivanzv",host="slackdroid.cloud",database="ingsoftware")
         print("Conectado a la base de datos")
         mycursor = cnx.cursor()
         query = "insert into Entrega (direccion, cliente, entregado,coordenadas,fechaentrega,idventa) Values ('" + data.direccion + "','" + data.cliente + "',false,'" + data.coordenadas + "',NOW()," + str(data.idventa) +");"
@@ -299,3 +299,5 @@ def RegistrarEntrega(data: Entrega):
         
     except Exception as e:
         print(e)
+        
+GetUsers()

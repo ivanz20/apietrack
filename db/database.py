@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-MYSQL_URL = "mysql+pymysql://root:@localhost:3306/ingsoftware?charset=utf8"
+MYSQL_URL = "mysql+pymysql://ivanzv:@ivanzv.mysql.pythonanywhere-services.com/ingsoftware?charset=utf8"
 POOL_SIZE = 20
 POOL_RECYCLE = 3600
 POOL_TIMEOUT = 15
@@ -14,6 +14,7 @@ class Database():
         self.engine = None
 
     def get_db_connection(self):
+        print(MYSQL_URL)
         if self.connection_is_active == False:
             connect_args = {"connect_timeout":CONNECT_TIMEOUT}
             try:
